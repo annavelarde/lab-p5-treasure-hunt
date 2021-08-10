@@ -7,3 +7,4 @@ const LEFT_ARROW = 37;
 const RIGHT_ARROW = 39;
 
 let playerImage; //imagen dinamica
+let treasureImage;

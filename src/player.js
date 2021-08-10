@@ -1,47 +1,58 @@
-class player {
+class Player {
   constructor(col, row) {
-    this.col = col; //y
-    this.row = row; //x
-    // this.width = playerX;
-    // this.height = playerY;
+    //position dos valores y tamanyos dos valores.
+    this.col = col; //x
+    this.row = row; //y
+    this.width = SQUARE_SIDE; //100
+    this.height = SQUARE_SIDE; //100
+    this.rightBoundary = WIDTH - this.width;
+    this.bottomBoundary = HEIGHT - this.height;
   }
 
   draw() {
-    //mirar!!!!!!
+    this.move();
+    this.maintainBoundaries();
     image(playerImage, this.col, this.row, this.width, this.height);
-    console.log(this.col, this.row);
   }
-
-  //   moveDown() // Increase by 1 the value of player.row
-  //   moveDown() // Increase by 1 the value of player.row
-  //   moveRight() // Increase by 1 the value of player.col
 
   move() {
-    if (keyIsDown(moveDown)) {
-      player.row += 1;
+    if (keyIsDown(DOWN_ARROW)) {
+      this.row += 10;
     }
 
-    if (keyIsDown(moveUp)) {
-      player.col -= 1;
+    if (keyIsDown(UP_ARROW)) {
+      this.row -= 10;
     }
-    if (keyIsDown(moveLeft)) {
-      player.row -= 1;
+    if (keyIsDown(LEFT_ARROW)) {
+      this.col -= 10;
     }
-    if (keyIsDown(moveRight)) {
-      player.col += 1;
+
+    if (keyIsDown(RIGHT_ARROW)) {
+      this.col += 10;
+    }
+    clear();
+  }
+
+  cantGoOverRight() {
+    if (this.x >= this.rightBoundary) {
+      this.x = this.rightBoundary;
     }
   }
 
-  // moveUp() {
-  //   this.row--;
-  // }
-  // moveDown() {
-  //   this.row++;
-  // }
-  // moveLeft() {
-  //   this.col--;
-  // }
-  // moveRight() {
-  //   this.col++;
-  // }
+  maintainBoundaries() {
+    if (this.x >= this.rightBoundary) {
+      //   this.x = this.rightBoundary;
+      this.x = 0;
+    }
+    if (this.y >= this.bottomBoundary) {
+      //   this.y = this.bottomBoundary;
+      this.y = 0;
+    }
+    if (this.x < 0) {
+      this.x = this.rightBoundary;
+    }
+    if (this.y < 0) {
+      this.y = this.bottomBoundary;
+    }
+  }
 }

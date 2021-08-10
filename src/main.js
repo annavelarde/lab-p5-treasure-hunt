@@ -1,7 +1,9 @@
-const game = new Game();
+const player = new Player();
+const treasure = new Treasure();
 
 function preload() {
-  playerImage = loadImage("./assets/character-down.png");
+  playerImage = loadImage("./assets/character-down.png"); //without value.
+  treasureImage = loadImage("./assets/treasure.png");
 }
 
 function setup() {
@@ -11,6 +13,9 @@ function setup() {
 
 function draw() {
   //call 16 times a second
-  game.draw();
-  //player.drawImage(); // Iteration 3 last part?
+  game.draw(); // Iteration 3 last part?
 }
+
+// function keyPressed() {
+//   game.keyPressed();
+// }
